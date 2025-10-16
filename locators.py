@@ -1,0 +1,68 @@
+from selenium.webdriver.common.by import By
+
+class MainPageLocators:
+    """Локаторы главной страницы"""
+    LOGIN_ACCOUNT_BUTTON = (By.XPATH, "//button[contains(text(), 'Войти в аккаунт')]")  # Кнопка "Войти в аккаунт" на главной странице
+    PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//a[contains(@href, '/account')]")  # Кнопка "Личный кабинет" в шапке сайта
+    CONSTRUCTOR_BUTTON = (By.XPATH, "//a[contains(@href, '/') and contains(text(), 'Конструктор')]")  # Кнопка "Конструктор" в шапке сайта
+    LOGO = (By.CLASS_NAME, "AppHeader_header__logo__2D0X2")  # Логотип Stellar Burgers
+    ORDER_BUTTON = (By.XPATH, "//button[contains(text(), 'Оформить заказ')]")  #  Кнопка оформить заказ
+
+
+class LoginFormLocators:
+    """Локаторы формы входа (используются на странице входа)"""
+    EMAIL_INPUT = (By.XPATH, "//input[@type='text']")  # Поле ввода email
+    PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")  # Поле ввода пароля
+    LOGIN_BUTTON = (By.XPATH, "//button[contains(text(), 'Войти')]")  # Кнопка "Войти" на странице входа
+    REGISTER_LINK = (By.XPATH, "//a[contains(text(), 'Зарегистрироваться')]")  # Ссылка "Зарегистрироваться" под формой входа
+    RECOVERY_LINK = (By.XPATH, "//a[contains(text(), 'Восстановить пароль')]")  # Ссылка "Восстановить пароль" под формой входа
+
+
+class RegistrationPageLocators:
+    """Локаторы страницы регистрации"""
+
+    NAME_INPUT = (By.XPATH, "(//input[@type='text'])[1]")  # Поле ввода имени
+    EMAIL_INPUT = (By.XPATH, "(//input[@type='text'])[2]")  # Поле ввода email
+
+    # Поле ввода пароля
+    PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")
+
+    # Кнопка "Зарегистрироваться"
+    REGISTER_BUTTON = (By.XPATH, "//button[contains(text(), 'Зарегистрироваться')]")
+
+    # Сообщение об ошибке валидации пароля
+    PASSWORD_ERROR = (By.CSS_SELECTOR, ".input__error")
+
+    # Ссылка "Войти" на странице регистрации
+    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]")
+
+
+class PasswordRecoveryLocators:
+    """Локаторы страницы восстановления пароля"""
+    # Ссылка "Войти" на странице восстановления пароля
+    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]")
+
+
+class ProfilePageLocators:
+    """Локаторы личного кабинета"""
+    # Кнопка "Выход" в личном кабинете
+    LOGOUT_BUTTON = (By.XPATH, "//button[contains(text(), 'Выход')]")
+
+    # Раздел "Профиль" в личном кабинете (для проверки что мы в ЛК)
+    PROFILE_SECTION = (By.XPATH, "//a[contains(text(), 'Профиль')]")
+
+
+class ConstructorLocators:
+    """Локаторы конструктора бургеров"""
+    # Раздел "Булки"
+    BUNS_SECTION = (By.XPATH, "//span[contains(text(), 'Булки')]/..")
+
+    # Раздел "Соусы"
+    SAUCES_SECTION = (By.XPATH, "//span[contains(text(), 'Соусы')]/..")
+
+    # Раздел "Начинки"
+    FILLINGS_SECTION = (By.XPATH, "//span[contains(text(), 'Начинки')]/..")
+
+    # Активный раздел конструктора (подсвеченный)
+    ACTIVE_SECTION = (By.CSS_SELECTOR, ".tab_tab_type_current__2BEPc")
+
