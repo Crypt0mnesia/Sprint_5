@@ -14,6 +14,7 @@ class TestRegistration:
 
         driver.get(URLs.REGISTER)
 
+        # Заполняем форму регистрации
         name_input = wait.until(EC.presence_of_element_located(RegistrationPageLocators.NAME_INPUT))
         name_input.send_keys(user["name"])
 
@@ -23,22 +24,24 @@ class TestRegistration:
         password_input = driver.find_element(*RegistrationPageLocators.PASSWORD_INPUT)
         password_input.send_keys(user["password"])
 
+        # Нажимаем кнопку регистрации
         register_button = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.REGISTER_BUTTON))
         register_button.click()
 
-        # Ожидаем перехода на страницу входа
+        # Ждем пока кнопка входа станет кликабельной
+        wait.until(EC.element_to_be_clickable(LoginFormLocators.LOGIN_BUTTON))
 
-        wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
-
-        assert URLs.LOGIN in driver.current_url
+        # Финальная проверка
+        assert driver.current_url == URLs.LOGIN
 
     def test_registration_short_password_error(self, driver, wait):
-        """Ошибка при регистрации с коротким паролем менее 6 символов"""
+        """Ошибка при регистрации с коротким паролем"""
         user = generate_user_data()
-        user["password"] = "12345"
+        user["password"] = "12345"  # 5 символов
 
         driver.get(URLs.REGISTER)
 
+        # Заполняем форму регистрации
         name_input = wait.until(EC.presence_of_element_located(RegistrationPageLocators.NAME_INPUT))
         name_input.send_keys(user["name"])
 
@@ -48,11 +51,13 @@ class TestRegistration:
         password_input = driver.find_element(*RegistrationPageLocators.PASSWORD_INPUT)
         password_input.send_keys(user["password"])
 
+        # Нажимаем кнопку регистрации
         register_button = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.REGISTER_BUTTON))
         register_button.click()
 
-        # Ожидаем появления ошибки
+        # Ждем появления ошибки и проверяем что остались на странице регистрации
         error_element = wait.until(EC.visibility_of_element_located(RegistrationPageLocators.PASSWORD_ERROR))
 
+        # Проверяем текст ошибки и URL
         assert TextMessages.PASSWORD_ERROR in error_element.text
-        assert URLs.REGISTER in driver.current_url
+        assert driver.current_url == URLs.REGISTER

@@ -23,18 +23,10 @@ class RegistrationPageLocators:
 
     NAME_INPUT = (By.XPATH, "(//input[@type='text'])[1]")  # Поле ввода имени
     EMAIL_INPUT = (By.XPATH, "(//input[@type='text'])[2]")  # Поле ввода email
-
-    # Поле ввода пароля
-    PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")
-
-    # Кнопка "Зарегистрироваться"
-    REGISTER_BUTTON = (By.XPATH, "//button[contains(text(), 'Зарегистрироваться')]")
-
-    # Сообщение об ошибке валидации пароля
-    PASSWORD_ERROR = (By.CSS_SELECTOR, ".input__error")
-
-    # Ссылка "Войти" на странице регистрации
-    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]")
+    PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")  # Поле ввода пароля
+    REGISTER_BUTTON = (By.XPATH, "//button[contains(text(), 'Зарегистрироваться')]")  # Кнопка "Зарегистрироваться"
+    PASSWORD_ERROR = (By.CSS_SELECTOR, ".input__error")  # Сообщение об ошибке валидации пароля
+    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]") # Ссылка "Войти" на странице регистрации
 
 
 class PasswordRecoveryLocators:
