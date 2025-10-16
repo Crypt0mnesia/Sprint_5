@@ -31,8 +31,7 @@ class RegistrationPageLocators:
 
 class PasswordRecoveryLocators:
     """Локаторы страницы восстановления пароля"""
-    # Ссылка "Войти" на странице восстановления пароля
-    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]")
+    LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]") # Ссылка "Войти" на странице восстановления пароля
 
 
 class ProfilePageLocators:

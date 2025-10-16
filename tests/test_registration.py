@@ -31,7 +31,7 @@ class TestRegistration:
         # Ждем пока кнопка входа станет кликабельной
         wait.until(EC.element_to_be_clickable(LoginFormLocators.LOGIN_BUTTON))
 
-        # Финальная проверка
+        # Проверяем переход на главную страницу
         assert driver.current_url == URLs.LOGIN
 
     def test_registration_short_password_error(self, driver, wait):
