@@ -27,6 +27,8 @@ class TestLogin:
         login_account_button = wait.until(EC.element_to_be_clickable(MainPageLocators.LOGIN_ACCOUNT_BUTTON))
         login_account_button.click()
 
+        wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
+
         self.login_user(driver, wait, Credentials.EMAIL,Credentials.PASSWORD)
 
         order_button = wait.until(EC.presence_of_element_located(MainPageLocators.ORDER_BUTTON))
@@ -38,12 +40,12 @@ class TestLogin:
         """Вход через кнопку 'Личный кабинет'"""
         driver.get(URLs.MAIN)
 
-        pesonal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
-        pesonal_account_button.click()
+        personal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
+        personal_account_button.click()
+
+        wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
         self.login_user(driver, wait, Credentials.EMAIL, Credentials.PASSWORD)
-
-        wait.until(EC.presence_of_element_located(MainPageLocators.ORDER_BUTTON))
 
         order_button = wait.until(EC.presence_of_element_located(MainPageLocators.ORDER_BUTTON))
 
@@ -72,6 +74,8 @@ class TestLogin:
 
         login_link = wait.until(EC.element_to_be_clickable(PasswordRecoveryLocators.LOGIN_LINK))
         login_link.click()
+
+        wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
         self.login_user(driver, wait, Credentials.EMAIL, Credentials.PASSWORD)
 

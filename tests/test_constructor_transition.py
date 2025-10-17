@@ -10,8 +10,8 @@ class TestConstructorTransition:
     def test_go_to_constructor_from_account_via_constructor_button(self, wait, authenticated_user):
         driver = authenticated_user
 
-        pesonal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
-        pesonal_account_button.click()
+        personal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
+        personal_account_button.click()
 
         constructor_button = wait.until(EC.element_to_be_clickable(HeaderLocators.CONSTRUCTOR_BUTTON))
         constructor_button.click()
@@ -22,11 +22,11 @@ class TestConstructorTransition:
         assert driver.current_url == URLs.MAIN
 
 
-    def test_go_to_constructor_from_accoun_via_logo(self, authenticated_user,wait):
+    def test_go_to_constructor_from_account_via_logo(self, authenticated_user,wait):
         driver = authenticated_user
 
-        pesonal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
-        pesonal_account_button.click()
+        personal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
+        personal_account_button.click()
 
         logo = wait.until(EC.element_to_be_clickable(HeaderLocators.LOGO))
         logo.click()
