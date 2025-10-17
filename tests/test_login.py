@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from data import URLs, Credentials
 from locators import MainPageLocators, HeaderLocators, LoginFormLocators, RegistrationPageLocators, PasswordRecoveryLocators
 
+
+
 class TestLogin:
     """Тесты функциональности входа"""
 
@@ -52,8 +54,10 @@ class TestLogin:
         """Вход через кнопку в форме регистрации"""
         driver.get(URLs.REGISTER)
 
-        login_link=wait.until(EC.element_to_be_clickable(RegistrationPageLocators.LOGIN_LINK))
+        login_link = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.LOGIN_LINK))
         login_link.click()
+
+        wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
         self.login_user(driver, wait, Credentials.EMAIL, Credentials.PASSWORD)
 

@@ -10,7 +10,7 @@ class URLs:
 
 class Credentials:
     """Учетные данные зарегистрированного пользователя"""
-    EMAIL = "ollypolly_32@yandex.ru"
+    EMAIL = "Olga_32_132@yandex.ru"
     PASSWORD = "qwerty1234"
 
 class TextMessages:
