@@ -10,7 +10,7 @@ from locators import LoginFormLocators, MainPageLocators
 
 @pytest.fixture
 def driver():
-    """ Фикстура для инициализации и закрытия браузера."""
+    """Фикстура для инициализации и закрытия браузера"""
     driver = webdriver.Chrome()
     driver.set_window_size(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT)
     driver.get(URLs.MAIN)
@@ -20,7 +20,7 @@ def driver():
 
 @pytest.fixture
 def wait(driver):
-    """ Фикстура для использование явных ожиданий в тестах."""
+    """Фикстура для использования явных ожиданий в тестах"""
     return WebDriverWait(driver, Settings.DEFAULT_TIMEOUT)
 
 
@@ -40,6 +40,6 @@ def authenticated_user(driver, wait):
     login_button.click()
 
     # Ждем завершения входа
-    wait.until(EC.presence_of_element_located(MainPageLocators.PERSONAL_ACCOUNT_BUTTON))
+    wait.until(EC.presence_of_element_located(MainPageLocators.ORDER_BUTTON))
 
     return driver

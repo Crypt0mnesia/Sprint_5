@@ -1,11 +1,13 @@
 from selenium.webdriver.common.by import By
 
+class HeaderLocators:
+    PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//p[contains(text(), 'Личный Кабинет')]")  # Кнопка "Личный кабинет" в шапке сайта
+    CONSTRUCTOR_BUTTON = (By.XPATH, "//p[contains(text(), 'Конструктор')]")  # Кнопка "Конструктор" в шапке сайта
+    LOGO = (By.CLASS_NAME, "AppHeader_header__logo__2D0X2")  # Логотип Stellar Burgers
+
 class MainPageLocators:
     """Локаторы главной страницы"""
     LOGIN_ACCOUNT_BUTTON = (By.XPATH, "//button[contains(text(), 'Войти в аккаунт')]")  # Кнопка "Войти в аккаунт" на главной странице
-    PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//a[contains(@href, '/account')]")  # Кнопка "Личный кабинет" в шапке сайта
-    CONSTRUCTOR_BUTTON = (By.XPATH, "//a[contains(@href, '/') and contains(text(), 'Конструктор')]")  # Кнопка "Конструктор" в шапке сайта
-    LOGO = (By.CLASS_NAME, "AppHeader_header__logo__2D0X2")  # Логотип Stellar Burgers
     ORDER_BUTTON = (By.XPATH, "//button[contains(text(), 'Оформить заказ')]")  #  Кнопка оформить заказ
 
 
@@ -20,7 +22,6 @@ class LoginFormLocators:
 
 class RegistrationPageLocators:
     """Локаторы страницы регистрации"""
-
     NAME_INPUT = (By.XPATH, "(//input[@type='text'])[1]")  # Поле ввода имени
     EMAIL_INPUT = (By.XPATH, "(//input[@type='text'])[2]")  # Поле ввода email
     PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")  # Поле ввода пароля
@@ -36,24 +37,14 @@ class PasswordRecoveryLocators:
 
 class ProfilePageLocators:
     """Локаторы личного кабинета"""
-    # Кнопка "Выход" в личном кабинете
-    LOGOUT_BUTTON = (By.XPATH, "//button[contains(text(), 'Выход')]")
-
-    # Раздел "Профиль" в личном кабинете (для проверки что мы в ЛК)
-    PROFILE_SECTION = (By.XPATH, "//a[contains(text(), 'Профиль')]")
+    LOGOUT_BUTTON = (By.XPATH, "//button[contains(text(), 'Выход')]")  # Кнопка "Выход" в личном кабинете
+    PROFILE_SECTION = (By.XPATH, "//a[contains(text(), 'Профиль')]")  # Раздел "Профиль" в личном кабинете (для проверки что мы в ЛК)
 
 
 class ConstructorLocators:
     """Локаторы конструктора бургеров"""
-    # Раздел "Булки"
-    BUNS_SECTION = (By.XPATH, "//span[contains(text(), 'Булки')]/..")
-
-    # Раздел "Соусы"
-    SAUCES_SECTION = (By.XPATH, "//span[contains(text(), 'Соусы')]/..")
-
-    # Раздел "Начинки"
-    FILLINGS_SECTION = (By.XPATH, "//span[contains(text(), 'Начинки')]/..")
-
-    # Активный раздел конструктора (подсвеченный)
-    ACTIVE_SECTION = (By.CSS_SELECTOR, ".tab_tab_type_current__2BEPc")
+    BUNS_SECTION = (By.XPATH, "//span[contains(text(), 'Булки')]")  # Раздел "Булки"
+    SAUCES_SECTION = (By.XPATH, "//span[contains(text(), 'Соусы')]")  # Раздел "Соусы"
+    FILLINGS_SECTION = (By.XPATH, "//span[contains(text(), 'Начинки')]")  # Раздел "Начинки
+    ACTIVE_SECTION = (By.CSS_SELECTOR, ".tab_tab_type_current__2BEPc")  # Активный раздел конструктора (подсвеченный)
 
