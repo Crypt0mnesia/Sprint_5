@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.support import expected_conditions as EC
 
-from data import URLs
+from urls import PROFILE
 from locators import HeaderLocators, ProfilePageLocators
 
 class TestPersonalAccount:
@@ -15,4 +15,4 @@ class TestPersonalAccount:
         profile_section=wait.until(EC.visibility_of_element_located(ProfilePageLocators.PROFILE_SECTION))
         #
         assert profile_section.is_displayed()
-        assert driver.current_url == URLs.PROFILE
+        assert driver.current_url == PROFILE

@@ -2,7 +2,8 @@ import pytest
 from selenium.webdriver.support import expected_conditions as EC
 
 from generator import generate_user_data
-from data import URLs, TextMessages
+from data import TextMessages
+from urls import LOGIN, REGISTER
 from locators import RegistrationPageLocators, LoginFormLocators
 
 
@@ -13,7 +14,7 @@ class TestRegistration:
         """Тест успешной регистрации"""
         user = generate_user_data()
 
-        driver.get(URLs.REGISTER)
+        driver.get(REGISTER)
 
         name_input = wait.until(EC.presence_of_element_located(RegistrationPageLocators.NAME_INPUT))
         name_input.send_keys(user["name"])
@@ -30,14 +31,14 @@ class TestRegistration:
         wait.until(EC.element_to_be_clickable(LoginFormLocators.LOGIN_BUTTON))
 
         # Проверяем URL
-        assert driver.current_url == URLs.LOGIN
+        assert driver.current_url == LOGIN
 
     def test_registration_short_password_error(self, driver, wait):
         """Ошибка при регистрации с паролем длиной 5 символов"""
         user = generate_user_data()
         user["password"] = "12345"  # 5 символов
 
-        driver.get(URLs.REGISTER)
+        driver.get(REGISTER)
 
         name_input = wait.until(EC.presence_of_element_located(RegistrationPageLocators.NAME_INPUT))
         name_input.send_keys(user["name"])
@@ -56,4 +57,4 @@ class TestRegistration:
 
         # Проверяем текст ошибки и URL
         assert TextMessages.PASSWORD_ERROR in error_element.text
-        assert driver.current_url == URLs.REGISTER
+        assert driver.current_url == REGISTER

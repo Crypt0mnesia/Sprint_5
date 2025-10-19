@@ -4,7 +4,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-from data import Settings, URLs, Credentials
+from data import Settings, Credentials
+from urls import MAIN, LOGIN
 from locators import LoginFormLocators, MainPageLocators
 
 
@@ -13,7 +14,7 @@ def driver():
     """Фикстура для инициализации и закрытия браузера"""
     driver = webdriver.Chrome()
     driver.set_window_size(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT)
-    driver.get(URLs.MAIN)
+    driver.get(MAIN)
     yield driver
     driver.quit()
 
@@ -29,7 +30,7 @@ def authenticated_user(driver, wait):
     """Фикстура для входа с использованием данных зарегистрированного пользователя"""
 
     # Заполняем форму входа
-    driver.get(URLs.LOGIN)
+    driver.get(LOGIN)
     email_input = wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
     email_input.send_keys(Credentials.EMAIL)
 

@@ -22,8 +22,8 @@ class LoginFormLocators:
 
 class RegistrationPageLocators:
     """Локаторы страницы регистрации"""
-    NAME_INPUT = (By.XPATH, "(//input[@type='text'])[1]")  # Поле ввода имени
-    EMAIL_INPUT = (By.XPATH, "(//input[@type='text'])[2]")  # Поле ввода email
+    NAME_INPUT = (By.XPATH, "//label[contains(text(), 'Имя')]/../input") # Поле ввода имени
+    EMAIL_INPUT = (By.XPATH, "//label[contains(text(), 'Email')]/../input")  # Поле ввода email
     PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")  # Поле ввода пароля
     REGISTER_BUTTON = (By.XPATH, "//button[contains(text(), 'Зарегистрироваться')]")  # Кнопка "Зарегистрироваться"
     PASSWORD_ERROR = (By.CSS_SELECTOR, ".input__error")  # Сообщение об ошибке валидации пароля

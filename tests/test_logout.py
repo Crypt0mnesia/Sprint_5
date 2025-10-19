@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.support import expected_conditions as EC
 
-from data import URLs
+from urls import LOGIN
 from locators import HeaderLocators, ProfilePageLocators, LoginFormLocators
 
 class TestLogout:
@@ -19,4 +19,4 @@ class TestLogout:
         login_button = wait.until(EC.presence_of_element_located(LoginFormLocators.LOGIN_BUTTON))
 
         assert login_button.is_displayed()
-        assert driver.current_url == URLs.LOGIN
+        assert driver.current_url == LOGIN

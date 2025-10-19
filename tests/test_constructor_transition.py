@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.support import expected_conditions as EC
 
-from data import URLs
+from urls import MAIN
 from locators import MainPageLocators, HeaderLocators
 
 
@@ -19,7 +19,7 @@ class TestConstructorTransition:
         order_button = wait.until(EC.element_to_be_clickable(MainPageLocators.ORDER_BUTTON))
 
         assert order_button.is_displayed()
-        assert driver.current_url == URLs.MAIN
+        assert driver.current_url == MAIN
 
 
     def test_go_to_constructor_from_account_via_logo(self, authenticated_user,wait):
@@ -34,4 +34,4 @@ class TestConstructorTransition:
         order_button = wait.until(EC.element_to_be_clickable(MainPageLocators.ORDER_BUTTON))
 
         assert order_button.is_displayed()
-        assert driver.current_url == URLs.MAIN
+        assert driver.current_url == MAIN

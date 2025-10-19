@@ -1,7 +1,8 @@
 import pytest
 from selenium.webdriver.support import expected_conditions as EC
 
-from data import URLs, TextMessages
+from data import TextMessages
+from urls import MAIN
 from locators import ConstructorLocators
 
 
@@ -9,35 +10,28 @@ from locators import ConstructorLocators
 class TestConstructorSections:
     """Тесты разделов конструктора"""
 
-    def test_switch_to_buns_section(self, driver, wait):
-        """Переход к разделу 'Булки'"""
-        driver.get(URLs.MAIN)
+    @pytest.mark.parametrize("target_section,expected_text", [
+        (ConstructorLocators.BUNS_SECTION, TextMessages.BUNS),
+        (ConstructorLocators.SAUCES_SECTION, TextMessages.SAUCES),
+        (ConstructorLocators.FILLINGS_SECTION, TextMessages.FILLINGS)
+    ])
 
-        sauces_section = wait.until(EC.element_to_be_clickable(ConstructorLocators.SAUCES_SECTION))
-        sauces_section.click()
+    def test_switch_to_section(self, driver, wait, target_section, expected_text):
+        """Параметризованный тест перехода к разделам конструктора"""
+        driver.get(MAIN)
 
-        buns_section = wait.until(EC.element_to_be_clickable(ConstructorLocators.BUNS_SECTION))
-        buns_section.click()
+        wait.until(EC.element_to_be_clickable(ConstructorLocators.BUNS_SECTION))
 
-        active_section = wait.until(EC.presence_of_element_located(ConstructorLocators.ACTIVE_SECTION))
-        assert TextMessages.BUNS in active_section.text
+        if target_section == ConstructorLocators.BUNS_SECTION:
+            sauces_element = wait.until(EC.presence_of_element_located(ConstructorLocators.SAUCES_SECTION))
+            driver.execute_script("arguments[0].click();", sauces_element)
 
-    def test_switch_to_sauces_section(self, driver, wait):
-        """Переход к разделу 'Соусы'"""
-        driver.get(URLs.MAIN)
+            buns_element = wait.until(EC.presence_of_element_located(ConstructorLocators.BUNS_SECTION))
+            driver.execute_script("arguments[0].click();", buns_element)
 
-        sauces_section = wait.until(EC.element_to_be_clickable(ConstructorLocators.SAUCES_SECTION))
-        sauces_section.click()
-
-        active_section = wait.until(EC.presence_of_element_located(ConstructorLocators.ACTIVE_SECTION))
-        assert TextMessages.SAUCES in active_section.text
-
-    def test_switch_to_fillings_section(self, driver, wait):
-        """Переход к разделу 'Начинки'"""
-        driver.get(URLs.MAIN)
-
-        fillings_section = wait.until(EC.element_to_be_clickable(ConstructorLocators.FILLINGS_SECTION))
-        fillings_section.click()
+        else:
+            target_element = wait.until(EC.presence_of_element_located(target_section))
+            driver.execute_script("arguments[0].click();", target_element)
 
         active_section = wait.until(EC.presence_of_element_located(ConstructorLocators.ACTIVE_SECTION))
-        assert TextMessages.FILLINGS in active_section.text
+        assert expected_text in active_section.text
