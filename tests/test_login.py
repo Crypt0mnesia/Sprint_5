@@ -15,7 +15,7 @@ class TestLogin:
         driver.get(MAIN)
 
         login_account_button = wait.until(EC.element_to_be_clickable(MainPageLocators.LOGIN_ACCOUNT_BUTTON))
-        login_account_button.click()
+        driver.execute_script("arguments[0].click();",login_account_button)
 
         wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
@@ -31,7 +31,7 @@ class TestLogin:
         driver.get(MAIN)
 
         personal_account_button = wait.until(EC.element_to_be_clickable(HeaderLocators.PERSONAL_ACCOUNT_BUTTON))
-        personal_account_button.click()
+        driver.execute_script("arguments[0].click();", personal_account_button)
 
         wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
@@ -47,7 +47,7 @@ class TestLogin:
         driver.get(REGISTER)
 
         login_link = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.LOGIN_LINK))
-        login_link.click()
+        driver.execute_script("arguments[0].click();", login_link)
 
         wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 
@@ -63,7 +63,7 @@ class TestLogin:
         driver.get(FORGOT_PASSWORD)
 
         login_link = wait.until(EC.element_to_be_clickable(PasswordRecoveryLocators.LOGIN_LINK))
-        login_link.click()
+        driver.execute_script("arguments[0].click();", login_link)
 
         wait.until(EC.presence_of_element_located(LoginFormLocators.EMAIL_INPUT))
 

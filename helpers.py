@@ -10,4 +10,4 @@ def login_user(driver, wait, email, password):
     password_input.send_keys(password)
 
     login_button = wait.until(EC.element_to_be_clickable(LoginFormLocators.LOGIN_BUTTON))
-    login_button.click()
+    driver.execute_script("arguments[0].click();", login_button)

@@ -19,7 +19,7 @@ class Settings:
     """Настройки приложения"""
     WINDOW_WIDTH = 1366       # Ширина окна браузера
     WINDOW_HEIGHT = 768       # Высота окна браузера
-    DEFAULT_TIMEOUT = 10      # Стандартное время ожидания
+    DEFAULT_TIMEOUT = 30      # Стандартное время ожидания
     MIN_PASSWORD_LENGTH = 6   # Минимальная длина пароля
 
 

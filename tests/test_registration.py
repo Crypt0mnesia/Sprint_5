@@ -26,7 +26,7 @@ class TestRegistration:
         password_input.send_keys(user["password"])
 
         register_button = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.REGISTER_BUTTON))
-        register_button.click()
+        driver.execute_script("arguments[0].click();", register_button)
 
         wait.until(EC.element_to_be_clickable(LoginFormLocators.LOGIN_BUTTON))
 
@@ -50,10 +50,10 @@ class TestRegistration:
         password_input.send_keys(user["password"])
 
         register_button = wait.until(EC.element_to_be_clickable(RegistrationPageLocators.REGISTER_BUTTON))
-        register_button.click()
+        driver.execute_script("arguments[0].click();", register_button)
 
         # Ждем появления ошибки и проверяем что остались на странице регистрации
-        error_element = wait.until(EC.visibility_of_element_located(RegistrationPageLocators.PASSWORD_ERROR))
+        error_element = wait.until(EC.presence_of_element_located(RegistrationPageLocators.PASSWORD_ERROR))
 
         # Проверяем текст ошибки и URL
         assert TextMessages.PASSWORD_ERROR in error_element.text

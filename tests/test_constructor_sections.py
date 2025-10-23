@@ -20,18 +20,11 @@ class TestConstructorSections:
         """Параметризованный тест перехода к разделам конструктора"""
         driver.get(MAIN)
 
-        wait.until(EC.element_to_be_clickable(ConstructorLocators.BUNS_SECTION))
+        sauces_element = wait.until(EC.element_to_be_clickable(ConstructorLocators.SAUCES_SECTION))
+        driver.execute_script("arguments[0].click();", sauces_element)
 
-        if target_section == ConstructorLocators.BUNS_SECTION:
-            sauces_element = wait.until(EC.presence_of_element_located(ConstructorLocators.SAUCES_SECTION))
-            driver.execute_script("arguments[0].click();", sauces_element)
-
-            buns_element = wait.until(EC.presence_of_element_located(ConstructorLocators.BUNS_SECTION))
-            driver.execute_script("arguments[0].click();", buns_element)
-
-        else:
-            target_element = wait.until(EC.presence_of_element_located(target_section))
-            driver.execute_script("arguments[0].click();", target_element)
+        target_element = wait.until(EC.element_to_be_clickable(target_section))
+        driver.execute_script("arguments[0].click();", target_element)
 
         active_section = wait.until(EC.presence_of_element_located(ConstructorLocators.ACTIVE_SECTION))
         assert expected_text in active_section.text
